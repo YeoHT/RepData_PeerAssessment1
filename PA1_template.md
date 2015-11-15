@@ -1,5 +1,3 @@
-setwd("C:/Users/hwee-theng.yeo/Desktop/Softwares/R/Cousera - Reproducible Research/Assignment 1")
-
 ---
 title: "Reproducible Research Assignment 1"
 output: html_document
@@ -16,7 +14,7 @@ Show any code that is needed to
 
 ```r
 # import the data
-raw_data <- read.csv(unz("repdata-data-activity.zip", "activity.csv"))
+raw_data <- read.csv(unz("activity.zip", "activity.csv"))
 
 # convert date to date data type
 raw_data$date <- as.Date(raw_data$date)
@@ -253,27 +251,7 @@ For this part the weekdays() function may be of some help here. Use the dataset 
 ```r
 # load dplyr package to use mutate function
 library(dplyr)
-```
 
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:plyr':
-## 
-##     arrange, count, desc, failwith, id, mutate, rename, summarise,
-##     summarize
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 # derive new variable to determine week type
 data_cleaned <- mutate(data_cleaned, week_type = ifelse(weekdays(data_cleaned$date) == "Saturday" | weekdays(data_cleaned$date) == "Sunday", "weekend", "weekday"))
 

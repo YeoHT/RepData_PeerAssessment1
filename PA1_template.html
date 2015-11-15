@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>output: html_document</title>
+<title></title>
 
 <script type="text/javascript">
 window.onload = function() {
@@ -201,14 +201,6 @@ hr {
 </head>
 
 <body>
-<p>setwd(&ldquo;C:/Users/hwee-theng.yeo/Desktop/Softwares/R/Cousera - Reproducible Research/Assignment 1&rdquo;)</p>
-
-<hr/>
-
-<p>title: &ldquo;Reproducible Research Assignment 1&rdquo;</p>
-
-<h2>output: html_document</h2>
-
 <p>##Loading and preprocessing the data</p>
 
 <p>Show any code that is needed to</p>
@@ -219,7 +211,7 @@ hr {
 </ol>
 
 <pre><code class="r"># import the data
-raw_data &lt;- read.csv(unz(&quot;repdata-data-activity.zip&quot;, &quot;activity.csv&quot;))
+raw_data &lt;- read.csv(unz(&quot;activity.zip&quot;, &quot;activity.csv&quot;))
 
 # convert date to date data type
 raw_data$date &lt;- as.Date(raw_data$date)
@@ -424,26 +416,8 @@ cat(&quot;The original mean and the newly calculated mean are the same?:&quot;, 
 
 <pre><code class="r"># load dplyr package to use mutate function
 library(dplyr)
-</code></pre>
 
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;
-## 
-## The following objects are masked from &#39;package:plyr&#39;:
-## 
-##     arrange, count, desc, failwith, id, mutate, rename, summarise,
-##     summarize
-## 
-## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag
-## 
-## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union
-</code></pre>
-
-<pre><code class="r"># derive new variable to determine week type
+# derive new variable to determine week type
 data_cleaned &lt;- mutate(data_cleaned, week_type = ifelse(weekdays(data_cleaned$date) == &quot;Saturday&quot; | weekdays(data_cleaned$date) == &quot;Sunday&quot;, &quot;weekend&quot;, &quot;weekday&quot;))
 
 # load lattice package to use xyplot
